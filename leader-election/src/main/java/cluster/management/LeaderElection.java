@@ -13,6 +13,7 @@ public class LeaderElection  implements Watcher {
     private static final String ELECTION_NAMESPACE = "/election";
     private String currentZnodeName;
     private ZooKeeper zooKeeper;
+    private final OnElectionCallBack onElectionCallBack;
 
 //    public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
 //        LeaderElection leaderElection = new LeaderElection();
@@ -24,8 +25,9 @@ public class LeaderElection  implements Watcher {
 //        leaderElection.close();
 //        System.out.println("Disconnect");
 //    }
-    public LeaderElection(ZooKeeper zooKeeper){
+    public LeaderElection(ZooKeeper zooKeeper, OnElectionCallBack onElectionCallBack){
         this.zooKeeper = zooKeeper;
+        this.onElectionCallBack = onElectionCallBack;
     }
 //
 //    public void connectToZookeeper() throws IOException {
@@ -64,6 +66,7 @@ public class LeaderElection  implements Watcher {
 
             if (smallestChild.equals(currentZnodeName)){
                 System.out.println("Iam the leader");
+                onElectionCallBack.onElectdToBeLeader();
                 return;
             }else{
                 System.out.println("Iam not the leader");
@@ -72,6 +75,7 @@ public class LeaderElection  implements Watcher {
                 predecessorStat = zooKeeper.exists(ELECTION_NAMESPACE + '/' + predecessorZnodeName, this);
             }
         }
+        onElectionCallBack.onWorker();
 
         System.out.println("Watching Znode: " + predecessorZnodeName);
         System.out.println();

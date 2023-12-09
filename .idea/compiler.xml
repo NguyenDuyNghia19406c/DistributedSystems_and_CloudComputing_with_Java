@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/leader-election/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="autohealer (2)" />
+        <module name="flaky.worker (1)" />
+        <module name="watchers" />
+        <module name="flaky.worker (2)" />
+        <module name="leader-election" />
+        <module name="autohealer (1)" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="autohealer" target="1.7" />
+      <module name="flaky.worker" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
