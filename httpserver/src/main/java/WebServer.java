@@ -98,7 +98,7 @@ public class WebServer {
             return;
         }
         
-        String responseMessage = "Server is alive!";
+        String responseMessage = "Server is alive!\n";
         sendResponse(responseMessage.getBytes(), exchange);
     }
 

@@ -12,6 +12,8 @@ public class ServiceRegistry implements Watcher {
     private final ZooKeeper zooKeeper;
     private String currentZnode = null;
     private List<String> allServiceAddresses = null;
+
+
     public ServiceRegistry(ZooKeeper zooKeeper) throws InterruptedException, KeeperException {
         this.zooKeeper = zooKeeper;
         createServiceRegistryZnode();
